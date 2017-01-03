@@ -1,2 +1,2 @@
 # noderogue
-roguelike dungeon crawler for terminals
+Roguelike dungeon crawler for terminals :metal:
