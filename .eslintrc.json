@@ -210,7 +210,7 @@
     "spaced-comment": ["off"],
     "unicode-bom": ["off"],
     "wrap-regex": ["off"],
-    "arrow-body-style": ["warn", "as-needed", {"requireReturnForObjectLiteral": true}],
+    "arrow-body-style": ["warn"],
     "arrow-parens": ["warn", "as-needed"],
     "arrow-spacing": ["warn"],
     "constructor-super": ["error"],
