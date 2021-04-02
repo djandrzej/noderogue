@@ -9,16 +9,16 @@
     "roguelike",
     "rpg"
   ],
-  "homepage": "https://github.com/djandrzej/noderogue#readme",
+  "homepage": "https://github.com/rafalmaciejewski/noderogue#readme",
   "bugs": {
-    "url": "https://github.com/djandrzej/noderogue/issues"
+    "url": "https://github.com/rafalmaciejewski/noderogue/issues"
   },
   "license": "MIT",
   "author": "Rafał Maciejewski <rafaljestsuper@gmail.com>",
   "main": "dist/app.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/djandrzej/noderogue.git"
+    "url": "git+https://github.com/rafalmaciejewski/noderogue.git"
   },
   "scripts": {
     "start": "babel-node lib/app.js",
