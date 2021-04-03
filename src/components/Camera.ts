@@ -1,10 +1,12 @@
 import Boundary from './Boundary';
 import GameMap from './GameMap';
+import { Entity, Position } from './entities/Entity';
+import Renderer from './Renderer';
 
 export default class Camera {
-  public map: any;
-  public position: { x: number; y: number };
-  private followedObject: any;
+  public map: GameMap;
+  public position: Position;
+  public followedObject: Entity;
   public mapBoundary: Boundary;
 
   constructor(map: GameMap) {
@@ -18,11 +20,11 @@ export default class Camera {
     this.mapBoundary = new Boundary(0, 0, map.tilesX, map.tilesY);
   }
 
-  follow(object: any): void {
+  follow(object: Entity): void {
     this.followedObject = object;
   }
 
-  update(renderer: any): void {
+  update(renderer: Renderer): void {
     if (this.followedObject !== null) {
       this.position.x = this.followedObject.position.x - renderer.viewportWidthFactor;
       this.position.y = this.followedObject.position.y - renderer.viewportHeightFactor;

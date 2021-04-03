@@ -3,21 +3,22 @@ import { random } from 'lodash';
 import Tile from './Tile';
 import Monster from './entities/Monster';
 import Player from './entities/Player';
+import Maze from './Maze';
 
 export default class GameMap {
   public tilesX: number;
   public tilesY: number;
-  private border: number;
-  private tileWidth: number;
-  private maze: any;
-  private tileHeight: number;
-  private wallSize: number;
-  public tiles: any[];
-  private players: any[];
-  private startingMonsters: number;
-  public monsters: any[];
+  public border: number;
+  public tileWidth: number;
+  public maze: Maze;
+  public tileHeight: number;
+  public wallSize: number;
+  public tiles: Tile[][];
+  public players: Player[];
+  public startingMonsters: number;
+  public monsters: Monster[];
 
-  constructor(maze) {
+  constructor(maze: Maze) {
     this.tilesX = 200;
     this.tilesY = 100;
     this.border = 3;
@@ -42,7 +43,7 @@ export default class GameMap {
     }
   }
 
-  addPlayer(player): void {
+  addPlayer(player: Player): void {
     let randomX;
     let randomY;
     let randomPosition;
@@ -75,7 +76,7 @@ export default class GameMap {
     }
   }
 
-  drawTile(tileX, tileY): void {
+  drawTile(tileX: number, tileY: number): void {
     const mazeTile = this.maze.tiles[tileX][tileY];
     const xFrom = tileX * (this.tileWidth + this.wallSize) + this.border;
     const xTo = tileX * (this.tileWidth + this.wallSize) + this.border + this.tileWidth + this.wallSize;
@@ -236,7 +237,7 @@ export default class GameMap {
     }
   }
 
-  moveMonster(monsterIdx, player): void {
+  moveMonster(monsterIdx: number, player: Player): void {
     let tile;
     const monster = this.monsters[monsterIdx];
     let monsterDirection;
@@ -265,8 +266,8 @@ export default class GameMap {
       // monster here!
     }
 
-    let tileX = monster.position.x + 0;
-    let tileY = monster.position.y + 0;
+    let tileX = monster.position.x;
+    let tileY = monster.position.y;
 
     switch (monsterDirection) {
       case 'n':
@@ -308,8 +309,8 @@ export default class GameMap {
         monster.position.y = tileY;
       } else {
         do {
-          tileX = monster.position.x + 0;
-          tileY = monster.position.y + 0;
+          tileX = monster.position.x;
+          tileY = monster.position.y;
 
           switch (random(1, 8)) {
             case 1:
@@ -357,7 +358,7 @@ export default class GameMap {
     }
   }
 
-  moveSlowMonsters(player): void {
+  moveSlowMonsters(player: Player): void {
     for (let i = 0, len = this.monsters.length; i < len; i += 1) {
       const monster = this.monsters[i];
       if (monster.type === 'slow') {

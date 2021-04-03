@@ -9,10 +9,10 @@ export interface MazeOptions {
 }
 
 export default class Maze {
-  private width: number;
-  private height: number;
-  private maxRoomSize: number;
-  private tiles: MazeTile[][];
+  public width: number;
+  public height: number;
+  public maxRoomSize: number;
+  public tiles: MazeTile[][];
   constructor(opts: MazeOptions = {}) {
     const defaultOptions = {
       width: 40,
@@ -38,16 +38,19 @@ export default class Maze {
   }
 
   generate(): void {
-    const connections: any = {};
+    const connections = {
+      idxA: new Set<number>(),
+      idxB: new Set<number>(),
+    };
 
-    function areConnected(idxA, idxB): boolean {
+    function areConnected(idxA: number, idxB: number): boolean {
       if (!isObject(connections.idxA) || !isObject(connections.idxB)) {
         return false;
       }
       return connections.idxA.has(idxB) && connections.idxB.has(idxA);
     }
 
-    function connect(idxA, idxB): void {
+    function connect(idxA: number, idxB: number): void {
       if (typeof connections.idxA !== 'object') {
         connections.idxA = new Set();
       }
@@ -81,7 +84,7 @@ export default class Maze {
       }
     }
 
-    edges.sort((a, b) => 0.5 - Math.random());
+    edges.sort(() => 0.5 - Math.random());
 
     log('Maze generation starting');
 

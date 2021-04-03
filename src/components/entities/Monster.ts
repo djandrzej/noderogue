@@ -2,12 +2,12 @@ import { random } from 'lodash';
 import { Entity } from './Entity';
 
 export default class Monster extends Entity {
-  private hp: number;
-  private charCode: number;
-  private charCodeHit: number;
-  private type: string;
-  private hit: boolean;
-  private isBeingHit: boolean;
+  public hp: number;
+  public charCode: number;
+  public charCodeHit: number;
+  public type: string;
+  public hit: boolean;
+  public isBeingHit: boolean;
   constructor(x: number, y: number) {
     super();
     this.position = {

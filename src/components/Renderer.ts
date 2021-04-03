@@ -1,14 +1,15 @@
 import crayon from 'chalk256';
+import { Widgets } from 'blessed';
 import Player from './entities/Player';
 import GameMap from './GameMap';
 import Camera from './Camera';
 
 export default class Renderer {
   private frame: number;
-  private viewportWidth: number;
-  private viewportHeight: number;
-  private viewportWidthFactor: number;
-  private viewportHeightFactor: number;
+  public viewportWidth: number;
+  public viewportHeight: number;
+  public viewportWidthFactor: number;
+  public viewportHeightFactor: number;
   constructor(boxWidth: number, boxHeight: number) {
     this.frame = 0;
     this.updateViewport(boxWidth, boxHeight);
@@ -21,7 +22,7 @@ export default class Renderer {
     this.viewportHeightFactor = Math.floor(this.viewportHeight / 2);
   }
 
-  onKey(player: Player, map: GameMap, screen): void {
+  onKey(player: Player, map: GameMap, screen: Widgets.Screen): void {
     screen.key(['up', 'down', 'right', 'left', 'space'], (ch, key) => {
       player.handleInput(key, map);
     });

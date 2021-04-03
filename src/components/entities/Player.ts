@@ -1,12 +1,11 @@
 import log from '../../utils/log';
 import crayon from 'chalk256';
-import Room from '../Room';
 import GameMap from '../GameMap';
 import { Entity } from './Entity';
 
 export default class Player extends Entity {
-  public roomsIn: Room[];
-  public roomsDiscovered: Room[];
+  public roomsIn: number[];
+  public roomsDiscovered: number[];
   private direction: string;
   private char: string;
   private hp: number;
@@ -113,7 +112,7 @@ export default class Player extends Entity {
     log(`Rooms in: ${JSON.stringify(this.roomsIn)}`);
   }
 
-  turnLeft() {
+  turnLeft(): void {
     switch (this.direction) {
       case 'up':
         this.direction = 'left';
@@ -130,7 +129,7 @@ export default class Player extends Entity {
     }
   }
 
-  turnRight() {
+  turnRight(): void {
     switch (this.direction) {
       case 'up':
         this.direction = 'right';
@@ -147,7 +146,7 @@ export default class Player extends Entity {
     }
   }
 
-  turnAround() {
+  turnAround(): void {
     switch (this.direction) {
       case 'up':
         this.direction = 'down';
@@ -164,9 +163,9 @@ export default class Player extends Entity {
     }
   }
 
-  handleInput(key, map) {
+  handleInput(key: { name: string }, map: GameMap): void {
     log(`Player position: x${this.position.x} y${this.position.y}`);
-    if (key && key.name) {
+    if (key?.name) {
       switch (key.name) {
         case 'up':
           this.moveForward(map);
@@ -187,7 +186,7 @@ export default class Player extends Entity {
     }
   }
 
-  action(map) {
+  action(map: GameMap): void {
     let tile;
 
     switch (this.direction) {
