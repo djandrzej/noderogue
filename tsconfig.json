@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "removeComments": true,
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "target": "es6",
+    "lib": ["es2018"],
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "node_modules",
+    "coverage",
+    "**/*.test.ts"
+  ]
+}
