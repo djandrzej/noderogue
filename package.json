@@ -33,6 +33,7 @@
     "start": "ts-node src/run.tsx",
     "clean": "rimraf lib",
     "game": "node lib/run.js",
+    "type-check": "tsc --noEmit",
     "watch": "npm run build -- -w",
     "release": "semantic-release",
     "lint": "eslint --max-warnings 0 './src/**/*.{ts,tsx}'",

@@ -1,10 +1,10 @@
-import log from '../utils/log';
+import log from '../../utils/log';
 import crayon from 'chalk256';
-import Room from './Room';
-import GameMap from './GameMap';
+import Room from '../Room';
+import GameMap from '../GameMap';
+import { Entity } from './Entity';
 
-export default class Player {
-  public position: { x: number; y: number };
+export default class Player extends Entity {
   public roomsIn: Room[];
   public roomsDiscovered: Room[];
   private direction: string;
@@ -13,6 +13,7 @@ export default class Player {
   private charColorCode: number;
   private hit: boolean;
   constructor() {
+    super();
     this.position = {
       x: 0,
       y: 0,

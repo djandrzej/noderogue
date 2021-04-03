@@ -7,7 +7,7 @@ import { createStore } from 'redux';
 import gameloop from 'node-gameloop';
 
 import GameMap from './components/GameMap';
-import Player from './components/Player';
+import Player from './components/entities/Player';
 import Renderer from './components/Renderer';
 import Camera from './components/Camera';
 import Maze from './components/Maze';
@@ -47,13 +47,14 @@ export function run(): void {
     map.drawMaze();
     console.log('Putting player into the game...');
     map.addPlayer(player);
-    console.log('Spawning some monsters');
+    console.log('Spawning some monsters...');
     map.addMonsters();
     console.log('Initializing camera...');
     const camera = new Camera(map);
     camera.follow(player);
-    console.log('Render...');
-    const renderer = new Renderer(70, 25);
+    console.log('Rendering...');
+    const renderer = new Renderer(screen.cols, screen.rows);
+    screen.on('resize', () => renderer.updateViewport(screen.cols, screen.rows));
     camera.update(renderer);
     renderer.draw(camera, player);
     renderer.onKey(player, map, screen);

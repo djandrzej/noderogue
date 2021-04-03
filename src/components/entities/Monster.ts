@@ -1,7 +1,7 @@
 import { random } from 'lodash';
+import { Entity } from './Entity';
 
-export default class Monster {
-  position: { x: number; y: number };
+export default class Monster extends Entity {
   private hp: number;
   private charCode: number;
   private charCodeHit: number;
@@ -9,6 +9,7 @@ export default class Monster {
   private hit: boolean;
   private isBeingHit: boolean;
   constructor(x: number, y: number) {
+    super();
     this.position = {
       x: x || 0,
       y: y || 0,

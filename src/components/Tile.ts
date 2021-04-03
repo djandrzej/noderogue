@@ -1,5 +1,5 @@
 export default class Tile {
-  private roomIds: any[];
+  private roomIds: number[];
   private charCode: number;
   private isPassable: boolean;
   private isDoor: boolean;

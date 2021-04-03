@@ -1,5 +1,5 @@
 import crayon from 'chalk256';
-import Player from './Player';
+import Player from './entities/Player';
 import GameMap from './GameMap';
 import Camera from './Camera';
 
@@ -11,6 +11,10 @@ export default class Renderer {
   private viewportHeightFactor: number;
   constructor(boxWidth: number, boxHeight: number) {
     this.frame = 0;
+    this.updateViewport(boxWidth, boxHeight);
+  }
+
+  updateViewport(boxWidth: number, boxHeight: number): void {
     this.viewportWidth = boxWidth - 1;
     this.viewportHeight = boxHeight - 1;
     this.viewportWidthFactor = Math.floor(this.viewportWidth / 2);

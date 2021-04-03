@@ -1,8 +1,8 @@
 import { random } from 'lodash';
 
 import Tile from './Tile';
-import Monster from './Monster';
-import Player from './Player';
+import Monster from './entities/Monster';
+import Player from './entities/Player';
 
 export default class GameMap {
   public tilesX: number;
