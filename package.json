@@ -1,6 +1,6 @@
 {
   "name": "noderogue",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Roguelike dungeon crawler for terminals",
   "keywords": [
     "crawler",
