@@ -1,14 +1,12 @@
-import fs from 'fs';
+import { appendFileSync } from 'fs';
+import { join } from 'path';
 
-const logPath = './noderogue.log';
+const logPath = join(__dirname, '..', '..', './.noderogue.log');
 
 function writeToFile(message: string): void {
-  fs.appendFileSync(logPath, message);
+  appendFileSync(logPath, message);
 }
 
-export default function log(message: string, force: boolean = false): void {
-  const forceCall = force || false;
-  if (forceCall) {
-    writeToFile(`${message}\n`);
-  }
+export default function log(message: string): void {
+  writeToFile(`${message}\n`);
 }

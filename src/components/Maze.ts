@@ -1,6 +1,5 @@
 import { isObject, random } from 'lodash';
 import MazeTile from './MazeTile';
-import log from '../utils/log';
 
 export interface MazeOptions {
   width?: number;
@@ -86,12 +85,6 @@ export default class Maze {
 
     edges.sort(() => 0.5 - Math.random());
 
-    log('Maze generation starting');
-
-    log(JSON.stringify(edges));
-    log(`There were ${edges.length} edges`);
-    log(`And there were ${sets.size} sets`);
-
     let firstTileSet;
     let secondTileSet;
     let firstTileSetIndex;
@@ -107,30 +100,23 @@ export default class Maze {
       firstTile = this.tiles[currentEdge[0].x][currentEdge[0].y];
       secondTile = this.tiles[currentEdge[1].x][currentEdge[1].y];
       orientation = currentEdge[2];
-      log(`Looping through edges: ${JSON.stringify(currentEdge)}`);
-      log(`First tile: ${JSON.stringify(firstTile)}`);
-      log(`Second tile: ${JSON.stringify(secondTile)}`);
       // eslint-disable-next-line no-loop-func
       sets.forEach((value, key) => {
         currentSet = value;
-        log(`Looping through sets: ${JSON.stringify(currentSet)}`);
         if (currentSet.has(firstTile)) {
           firstTileSet = currentSet;
           firstTileSetIndex = key;
-          log(`Found set for first tile with index ${firstTileSetIndex}: ${JSON.stringify(firstTileSet)}`);
         }
         if (currentSet.has(secondTile)) {
           secondTileSet = currentSet;
           secondTileSetIndex = key;
-          log(`Found set for second tile with index ${secondTileSetIndex}: ${JSON.stringify(secondTileSet)}`);
         }
       });
 
       if (firstTileSet.has(firstTile) && firstTileSet.has(secondTile)) {
-        log('Tiles are in the same set');
+        // tiles are in the same set
       } else if (firstTileSet.size + secondTileSet.size > this.maxRoomSize) {
         if (areConnected(firstTileSetIndex, secondTileSetIndex)) {
-          log('Sets are already connected');
           if (random(1, 100) > 95) {
             if (orientation === 'h') {
               firstTile.hasSecretDoorEast = true;
@@ -139,10 +125,8 @@ export default class Maze {
               firstTile.hasSecretDoorSouth = true;
               secondTile.hasSecretDoorNorth = true;
             }
-            log('Created a secret door');
           }
         } else {
-          log(`Connecting two sets: ${firstTileSetIndex} ${secondTileSetIndex}`);
           connect(firstTileSetIndex, secondTileSetIndex);
           if (orientation === 'h') {
             firstTile.hasDoorEast = true;
@@ -154,9 +138,7 @@ export default class Maze {
         }
       } else {
         secondTileSet.delete(secondTile);
-        log('Deleted second tile from second set');
         firstTileSet.add(secondTile);
-        log('Added second tile to first set');
         if (orientation === 'h') {
           firstTile.hasWallEast = false;
           secondTile.hasWallWest = false;
@@ -166,18 +148,12 @@ export default class Maze {
         }
         sets.set(firstTileSetIndex, new Set([...firstTileSet, ...secondTileSet]));
         sets.delete(secondTileSetIndex);
-        log('Merges sets as fist set and removed second set from sets array');
       }
-      log(`Finished processing current edge, sets left: ${JSON.stringify(sets)}`);
     }
-    log(`Finished maze generation. And there are ${sets.size} sets left`);
-
-    log("Now to assign room ID's");
     sets.forEach((set, idx) => {
       set.forEach((tile) => {
         tile.roomId = idx;
       });
     });
-    log(JSON.stringify(this.tiles));
   }
 }

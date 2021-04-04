@@ -64,7 +64,6 @@ export default class Player extends Entity {
     let isMonsterHere = false;
     switch (this.direction) {
       case 'up':
-        log('moved up');
         isMonsterHere =
           map.monsters.filter((val) => val.position.x === this.position.x && val.position.y === this.position.y - 1)
             .length > 0;
@@ -73,7 +72,6 @@ export default class Player extends Entity {
         }
         break;
       case 'down':
-        log('moved down');
         isMonsterHere =
           map.monsters.filter((val) => val.position.x === this.position.x && val.position.y === this.position.x + 1)
             .length > 0;
@@ -82,7 +80,6 @@ export default class Player extends Entity {
         }
         break;
       case 'left':
-        log('moved left');
         isMonsterHere =
           map.monsters.filter((val) => val.position.x === this.position.x - 1 && val.position.y === this.position.y)
             .length > 0;
@@ -91,7 +88,6 @@ export default class Player extends Entity {
         }
         break;
       case 'right':
-        log('moved right');
         isMonsterHere =
           map.monsters.filter((val) => val.position.x === this.position.x + 1 && val.position.y === this.position.y)
             .length > 0;
@@ -108,8 +104,6 @@ export default class Player extends Entity {
         this.roomsDiscovered.push(roomId);
       }
     }
-    log(`Rooms discovered: ${JSON.stringify(this.roomsDiscovered)}`);
-    log(`Rooms in: ${JSON.stringify(this.roomsIn)}`);
   }
 
   turnLeft(): void {
@@ -164,7 +158,7 @@ export default class Player extends Entity {
   }
 
   handleInput(key: { name: string }, map: GameMap): void {
-    log(`Player position: x${this.position.x} y${this.position.y}`);
+    log(`Player input: ${JSON.stringify(key)}`);
     if (key?.name) {
       switch (key.name) {
         case 'up':
