@@ -1,3 +1,14 @@
+## [1.0.3](https://github.com/rafalmaciejewski/noderogue/compare/v1.0.2...v1.0.3) (2021-04-04)
+
+
+### Bug Fixes
+
+* increase monster count ([159c6b4](https://github.com/rafalmaciejewski/noderogue/commit/159c6b44b2ba7b318599cd92646bd18bab3263b6))
+* make maze larger ([e594e4f](https://github.com/rafalmaciejewski/noderogue/commit/e594e4f850f3e9b52e37f8afe6e2912dcaf4af23))
+* output logs to file ([f3a2387](https://github.com/rafalmaciejewski/noderogue/commit/f3a23872256f22708fd541b1b7a604b9afcff2ad))
+* update tile colors, replace outdated library for terminal colors ([ac72f8b](https://github.com/rafalmaciejewski/noderogue/commit/ac72f8b0eb5abe3188ade7fb3e5a69bac5417304))
+* use entire viewport ([087cd3b](https://github.com/rafalmaciejewski/noderogue/commit/087cd3b1d3561bc70afbc94c3423ea108c1ddb88))
+
 ## [1.0.2](https://github.com/rafalmaciejewski/noderogue/compare/v1.0.1...v1.0.2) (2021-04-03)
 
 
