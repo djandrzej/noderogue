@@ -6,10 +6,10 @@ class Window extends React.Component<{ content: string }> {
     const { content } = this.props;
     return (
       <blessed-box
-        top={1}
-        left={1}
-        width="100%-1"
-        height="100%-1"
+        top={0}
+        left={0}
+        width="100%"
+        height="100%"
         style={{
           bg: 'black',
         }}

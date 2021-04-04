@@ -16,8 +16,8 @@ export default class Renderer {
   }
 
   updateViewport(boxWidth: number, boxHeight: number): void {
-    this.viewportWidth = boxWidth - 1;
-    this.viewportHeight = boxHeight - 1;
+    this.viewportWidth = boxWidth;
+    this.viewportHeight = boxHeight;
     this.viewportWidthFactor = Math.floor(this.viewportWidth / 2);
     this.viewportHeightFactor = Math.floor(this.viewportHeight / 2);
   }
