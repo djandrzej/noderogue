@@ -59,7 +59,9 @@ export default class GameManager {
       screen.on('resize', () => renderer.updateViewport(screen.cols, screen.rows));
       camera.update(renderer);
       renderer.draw(camera, player);
-      renderer.onKey(player, map, screen);
+      screen.key(['up', 'down', 'right', 'left', 'space'], (ch, key) => {
+        player.handleInput(key, map);
+      });
       gameloop.setGameLoop(() => {
         map.moveSlowMonsters(player);
       }, 1000);

@@ -1,7 +1,5 @@
 import crayon from 'chalk256';
-import { Widgets } from 'blessed';
 import Player from './entities/Player';
-import GameMap from './GameMap';
 import Camera from './Camera';
 
 export default class Renderer {
@@ -20,12 +18,6 @@ export default class Renderer {
     this.viewportHeight = boxHeight;
     this.viewportWidthFactor = Math.floor(this.viewportWidth / 2);
     this.viewportHeightFactor = Math.floor(this.viewportHeight / 2);
-  }
-
-  onKey(player: Player, map: GameMap, screen: Widgets.Screen): void {
-    screen.key(['up', 'down', 'right', 'left', 'space'], (ch, key) => {
-      player.handleInput(key, map);
-    });
   }
 
   draw(camera: Camera, player: Player): string {
