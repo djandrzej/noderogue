@@ -27,7 +27,7 @@ export default class GameMap {
     this.wallSize = 1;
     this.tiles = [];
     this.players = [];
-    this.startingMonsters = 100;
+    this.startingMonsters = 1000;
     this.monsters = [];
     this.maze = maze;
   }
