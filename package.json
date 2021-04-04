@@ -48,6 +48,7 @@
     "blessed": "0.1.81",
     "blessed-contrib": "4.8.21",
     "chalk256": "5.1.0",
+    "inversify": "5.0.5",
     "keypress": "0.2.1",
     "lodash": "4.17.21",
     "node-gameloop": "0.1.4",
@@ -55,7 +56,8 @@
     "react-blessed": "0.7.2",
     "react-dom": "17.0.2",
     "react-redux": "7.2.3",
-    "redux": "4.0.5"
+    "redux": "4.0.5",
+    "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
     "@semantic-release/changelog": "5.0.1",
