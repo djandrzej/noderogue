@@ -11,7 +11,7 @@ class Window extends React.Component<{ content: string }> {
         width="100%"
         height="100%"
         style={{
-          bg: 'black',
+          bg: '#000000',
         }}
       >
         {content}

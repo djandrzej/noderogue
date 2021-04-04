@@ -1,5 +1,5 @@
 import log from '../../utils/log';
-import crayon from 'chalk256';
+import chalk from 'chalk';
 import GameMap from '../GameMap';
 import { Entity } from './Entity';
 
@@ -57,7 +57,7 @@ export default class Player extends Entity {
     if (this.charColorCode === 166) {
       this.charColorCode = 160;
     }
-    return this.hit ? crayon[(this.charColorCode += 1)](this.char) : crayon.yellow(this.char);
+    return this.hit ? chalk.redBright(this.char) : chalk.green(this.char);
   }
 
   moveForward(map: GameMap): void {

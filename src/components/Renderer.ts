@@ -1,4 +1,4 @@
-import crayon from 'chalk256';
+import chalk from 'chalk';
 import Player from './entities/Player';
 import Camera from './Camera';
 
@@ -46,8 +46,8 @@ export default class Renderer {
         monsterAt[monsterPosition.x][monsterPosition.y] = monsters[j];
       }
     }
-    const wall = crayon.red('#');
-    const wallDiscovered = crayon[235]('#');
+    const wall = chalk.redBright('#');
+    const wallDiscovered = chalk.gray('#');
     let currentX;
     let currentY;
     for (let y = 0; y < this.viewportHeight; y++) {
@@ -78,7 +78,7 @@ export default class Renderer {
           }
           switch (currentTile.charCode) {
             case 0:
-              tile = ' ';
+              tile = chalk(' ');
               break;
             case 1:
               if (tileVisible) {
@@ -86,40 +86,41 @@ export default class Renderer {
               } else if (tileDiscovered) {
                 tile = wallDiscovered;
               } else {
-                tile = ' ';
+                tile = chalk(' ');
               }
               break;
             case 2:
               if (tileVisible) {
-                tile = crayon.brown('.');
+                tile = chalk.redBright('.');
               } else if (tileDiscovered) {
-                // tile = ' ';
-                tile = crayon[235]('.');
+                tile = chalk.gray('.');
               } else {
                 tile = ' ';
               }
               break;
             case 3:
               if (tileVisible) {
-                tile = crayon.brown('D');
+                tile = chalk.yellowBright('+');
               } else if (tileDiscovered) {
-                tile = crayon[236]('D');
+                tile = chalk.gray('+');
               } else {
                 tile = ' ';
               }
               break;
             case 4:
-              if (tileVisible || tileDiscovered) {
-                tile = '4';
+              if (tileVisible) {
+                tile = chalk.red('#');
+              } else if (tileDiscovered) {
+                tile = chalk.gray('#');
               } else {
                 tile = ' ';
               }
               break;
             case 5:
               if (tileVisible) {
-                tile = crayon.brown('\\');
+                tile = chalk.yellowBright('\\');
               } else if (tileDiscovered) {
-                tile = crayon.darkgray('\\');
+                tile = chalk.gray('\\');
               } else {
                 tile = ' ';
               }
@@ -136,7 +137,7 @@ export default class Renderer {
           }
         }
         if (monsterAt[currentX]?.[currentY] && tileVisible) {
-          tile = crayon.green(monsterAt[currentX][currentY].getChar());
+          tile = chalk.green(monsterAt[currentX][currentY].getChar());
         }
         if (playerAt[currentX]?.[currentY]) {
           pcords.x = currentX;
