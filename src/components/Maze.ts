@@ -15,9 +15,9 @@ export default class Maze {
   public tiles: MazeTile[][];
   constructor(opts: MazeOptions = {}) {
     const defaultOptions = {
-      width: 40,
-      height: 40,
-      maxRoomSize: 5,
+      width: 60,
+      height: 60,
+      maxRoomSize: 6,
     };
     const options = {
       ...defaultOptions,

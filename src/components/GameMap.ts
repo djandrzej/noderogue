@@ -19,8 +19,8 @@ export default class GameMap {
   public monsters: Monster[];
 
   constructor(maze: Maze) {
-    this.tilesX = 200;
-    this.tilesY = 100;
+    this.tilesX = 1000;
+    this.tilesY = 1000;
     this.border = 3;
     this.tileWidth = 7;
     this.tileHeight = 3;
